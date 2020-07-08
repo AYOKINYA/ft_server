@@ -9,8 +9,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y nginx
 RUN apt-get install -y wget
 
-#ssl
-
+#원래는 ssl 파일을 따로 추가해주려고 했지만 빌드할 때 생성해서 넣는 것으로 변경
 #RUN mkdir -p /etc/nginx/ssl
 #COPY ./srcs/server.key /etc/nginx/ssl/server.key
 #COPY ./srcs/server.crt /etc/nginx/ssl/server.crt
@@ -19,7 +18,6 @@ RUN apt-get install -y wget
 RUN apt install -y php7.3-cli php7.3-fpm php7.3-mysql php7.3-json php7.3-opcache php7.3-mbstring php7.3-xml php7.3-gd php7.3-curl
 
 COPY ./srcs/nginx.config /etc/nginx/sites-available/default
-COPY ./srcs/phpinfo.php /var/www/html/phpinfo.php
 
 #install mysql(mariadb) for DB
 RUN apt install -y mariadb-server mariadb-client
